@@ -36,12 +36,12 @@ abstract class NetworkBoundResource<ResultType>
                 }
                 is ApiEmptyResponse -> {
                     appExecutors.mainThread().execute {
-                        setValue(Resource.error("emprty data", null))
+                        setValue(Resource.error("empty data", null))
                     }
                 }
                 is ApiErrorResponse -> {
                     onFetchFailed()
-                    setValue(Resource.error("emprty data", null))
+                    setValue(Resource.error("empty data", null))
                 }
             }
         }

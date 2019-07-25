@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_retro_room.*
 import javax.inject.Inject
 import android.widget.Toast
 import com.kotlinmvvm.app.R
-import com.kotlinmvvm.app.models.users.UserList
 import com.kotlinmvvm.app.utils.*
 
 
@@ -48,7 +47,7 @@ class RetroRoomActivity : BaseActivity<UserListViewModel>() {
         })
     }
 
-    private fun consumeResponseLiveData(response: Resource<UserList>) {
+    private fun consumeResponseLiveData(response: Resource<List<DataItem>>) {
         when (response.status) {
             Status.LOADING -> showProgressDialog()
             Status.SUCCESS -> {
@@ -64,17 +63,13 @@ class RetroRoomActivity : BaseActivity<UserListViewModel>() {
         }
     }
 
-    private fun renderSuccessResponse(data: UserList?) {
+    private fun renderSuccessResponse(data: List<DataItem>?) {
         data.let {
-            it.let {
-                it?.data.let {
-                    if (it != null) {
-                        for (user in it) {
-                            user?.let { it1 -> userList.add(it1) }
-                        }
-                        useradater.setCategoryList(userList)
-                    }
+            if (it != null) {
+                for (user in it) {
+                    user?.let { it1 -> userList.add(it1) }
                 }
+                useradater.setCategoryList(userList)
             }
         }
     }

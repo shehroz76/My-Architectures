@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kotlin MVVM</string>
+    <string name="register">Don\'t have an acount?\n
+        <u>
+            <b>Register</b>
+        </u>
+    </string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="password">Enter Password</string>
+</resources>
